@@ -5,6 +5,7 @@ function HomePage() {
   return (
     <div className="home-container">
       <Header />
+
       <Footer />
     </div>
   );

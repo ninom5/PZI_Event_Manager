@@ -3,6 +3,7 @@
 // // import headerLogo from "../assets/headerLogo.jpg";
 // import { faSearch } from "@fortawesome/free-solid-svg-icons";
 // import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -19,7 +20,7 @@ function Header() {
             <a href="/">About</a>
           </li>
           <li>
-            <a href="/">Events</a>
+            <Link to="/events">Events</Link>
           </li>
         </ul>
       </nav>
