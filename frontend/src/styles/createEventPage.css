@@ -25,17 +25,22 @@ form {
 
 form label {
   font-size: 12px;
+  width: 90%;
 }
 
-form input {
+.add-img-btn {
   margin: 10px;
   padding: 10px;
-  border: 0px;
 }
 
-form input,
-form textarea,
-form select {
+#remove-img {
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.text-input,
+select {
   height: 2.2em;
   width: 100%;
   margin: 0.5em 0;

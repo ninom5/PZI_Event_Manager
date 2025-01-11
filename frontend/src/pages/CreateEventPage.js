@@ -68,7 +68,9 @@ function CreateEventPage() {
               width={"250px"}
               src={URL.createObjectURL(selectedImage)}
             />
-            <button onClick={() => setSelectedImage(null)}>Remove image</button>
+            <button id="remove-img" onClick={() => setSelectedImage(null)}>
+              Remove image
+            </button>
           </div>
         )}
         <label>
@@ -77,6 +79,7 @@ function CreateEventPage() {
             type="file"
             name="coverImageName"
             onChange={(e) => setSelectedImage(e.target.files[0])}
+            className="add-img-btn"
             required
           />
         </label>
@@ -87,6 +90,7 @@ function CreateEventPage() {
             value={eventName}
             name="nameOfTheEvent"
             onChange={(e) => setEventName(e.target.value)}
+            className="text-input"
             required
           />
         </label>
@@ -97,6 +101,7 @@ function CreateEventPage() {
               value={eventDescription}
               name="eventDescription"
               onChange={(e) => setEventDescription(e.target.value)}
+              className="text-input"
               required
             />
           </div>
