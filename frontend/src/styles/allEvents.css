@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+}
+.all-events-container {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.all-events-container__element {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+  margin-top: 40px;
+}

@@ -31,6 +31,8 @@ function CreateEventPage() {
         coverImageName: selectedImage ? selectedImage.name : "",
         nameOfTheEvent: eventName,
         eventDescription,
+        // startDateEvent,
+        // endDateEvent,
         categories: document.querySelector("select[name='categories']").value,
       });
 
@@ -41,6 +43,8 @@ function CreateEventPage() {
         coverImageName: selectedImage ? selectedImage.name : "",
         nameOfTheEvent: eventName,
         eventDescription,
+        // startDateEvent,
+        // endDateEvent,
         categories: document.querySelector("select[name='categories']").value,
       };
 

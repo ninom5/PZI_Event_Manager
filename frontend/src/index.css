@@ -3,8 +3,9 @@
 @import "./styles/homePage.css";
 @import "./styles/createEventPage.css";
 @import "./styles/hover.css";
-@import "bootstrap/dist/css/bootstrap.min.css";
-
+/* @import "bootstrap/dist/css/bootstrap.min.css"; */
+@import "./styles/allEvents.css";
+@import "./styles/card.css";
 * {
   margin: 0;
   padding: 0;

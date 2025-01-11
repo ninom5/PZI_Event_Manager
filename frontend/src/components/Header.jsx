@@ -3,8 +3,7 @@
 // // import headerLogo from "../assets/headerLogo.jpg";
 // import { faSearch } from "@fortawesome/free-solid-svg-icons";
 // import axios from "axios";
-import { Link } from "react-router-dom";
-import DropDownButton from "./DropDownButton";
+// import DropDownButton from "./DropDownButton";
 import Hover from "./Hover";
 
 function Header() {
@@ -23,7 +22,6 @@ function Header() {
           </li>
           <li>
             <Hover />
-            {/* <Link to="/events">Events</Link> */}
           </li>
         </ul>
       </nav>

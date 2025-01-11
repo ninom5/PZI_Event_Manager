@@ -1,15 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function HoverDropdown() {
   return (
     <div className="dropdown-container">
-      <span className="dropdown-label">Events</span>
+      <label className="dropdown-label">Events</label>
       <ul className="dropdown-menu">
         <li>
-          <a href="#/create">Create event</a>
+          <Link to="/events">Create event</Link>
         </li>
         <li>
-          <a href="#/see-all">See all events</a>
+          <Link to="/actualEvents">See all events</Link>
         </li>
         <li>
           <a href="#/delete">Delete event</a>

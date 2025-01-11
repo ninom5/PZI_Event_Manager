@@ -30,6 +30,21 @@ app.post("/events", (req, res) => {
   }
 });
 
+// app.get("/actualEvents", (req, res) => {
+//   try {
+//     if (events.length === 0) return res.json("No events available");
+
+//     events.forEach((event) => {
+//       console.log(event);
+//     });
+
+//     return res.json(events);
+//   } catch (error) {
+//     console.error(`Error: ${error}`);
+//     return res.status(500);
+//   }
+// });
+
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
 });
