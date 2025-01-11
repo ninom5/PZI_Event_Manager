@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-const PORT = 3000;
+const PORT = 5000;
 
 let events = [];
 
@@ -11,9 +11,16 @@ app.use(cors());
 
 app.post("/events", (req, res) => {
   try {
-    const { name } = req.body;
+    const { coverImageName, nameOfTheEvent, eventDescription, categories } =
+      req.body;
 
-    const newEvent = { id: events.length + 1, name };
+    const newEvent = {
+      id: events.length + 1,
+      coverImageName,
+      nameOfTheEvent,
+      eventDescription,
+      categories,
+    };
 
     events.push(newEvent);
 
