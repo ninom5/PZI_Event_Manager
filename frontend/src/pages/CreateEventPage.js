@@ -26,25 +26,36 @@ function CreateEventPage() {
       return;
     }
 
+    const getBase64 = (file) =>
+      new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = (error) => reject(error);
+        reader.readAsDataURL(file);
+      });
+
+    let base64Image = "";
+
+    if (selectedImage) {
+      base64Image = await getBase64(selectedImage);
+    }
+
     try {
       const response = await axios.post("http://localhost:5000/events", {
-        coverImageName: selectedImage ? selectedImage.name : "",
+        coverImageName: base64Image,
         nameOfTheEvent: eventName,
         eventDescription,
-        // startDateEvent,
-        // endDateEvent,
         categories: document.querySelector("select[name='categories']").value,
       });
 
       alert(response.data);
 
       const existingEvents = JSON.parse(localStorage.getItem("events")) || [];
+
       const newEvent = {
-        coverImageName: selectedImage ? selectedImage.name : "",
+        coverImageName: base64Image,
         nameOfTheEvent: eventName,
         eventDescription,
-        // startDateEvent,
-        // endDateEvent,
         categories: document.querySelector("select[name='categories']").value,
       };
 
@@ -53,7 +64,9 @@ function CreateEventPage() {
 
       setEventName("");
       setEventDescription("");
+
       setSelectedImage(null);
+
       document.querySelector("select[name='categories']").selectedIndex = 0;
     } catch (error) {
       console.error("Error creating event:", error);

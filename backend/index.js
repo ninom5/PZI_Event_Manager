@@ -6,7 +6,7 @@ const PORT = 5000;
 
 let events = [];
 
-app.use(express.json());
+app.use(express.json({ limit: "10mb" }));
 app.use(cors());
 
 app.post("/events", (req, res) => {

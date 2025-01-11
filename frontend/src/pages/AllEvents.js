@@ -18,7 +18,7 @@ function AllEvents() {
         {events.length > 0 ? (
           events.map((event, index) => {
             return (
-              <div className="card">
+              <div className="card" key={index}>
                 <Card
                   eventImg={event.coverImageName}
                   eventName={event.nameOfTheEvent}
