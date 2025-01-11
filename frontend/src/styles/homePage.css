@@ -3,6 +3,8 @@
 }
 
 .home-container {
+  background-color: #f9f5f0;
+  /* background: linear-gradient(to bottom, #E0F2FE, #F3F8FF); */
   display: flex;
   height: 100vh;
   flex-direction: column;

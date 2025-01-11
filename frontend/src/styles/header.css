@@ -8,10 +8,10 @@
 
 header {
   display: flex;
-  background-color: lightgray;
+  background-color: #1e3a8a;
   padding: 10px 0;
   align-items: center;
-  color: black;
+  color: #ffffff;
   border-radius: 5px;
   box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.2);
   width: 100%;
@@ -39,12 +39,12 @@ nav ul {
 
 li a {
   text-decoration: none;
-  color: black;
+  color: #ffffff;
   font-size: 19px;
   padding: 5px 10px;
   transition: color 0.5s ease;
 }
 
 li a:hover {
-  color: rgb(18, 170, 170);
+  color: #facc15;
 }

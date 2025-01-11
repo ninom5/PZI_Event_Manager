@@ -10,7 +10,7 @@
   transition: color 0.5s ease;
 }
 .dropdown-label:hover {
-  color: rgb(18, 170, 170);
+  color: #facc15;
 }
 
 .dropdown-menu {
@@ -37,8 +37,8 @@
 
 .dropdown-menu li:hover,
 .dropdown-menu a:hover {
-  background-color: #f1f1f1;
-  color: rgb(18, 170, 170);
+  background-color: white;
+  color: #facc15;
 }
 
 .dropdown-container:hover .dropdown-menu {
