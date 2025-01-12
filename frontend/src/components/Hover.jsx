@@ -10,10 +10,10 @@ function HoverDropdown() {
           <Link to="/events">Create event</Link>
         </li>
         <li>
-          <Link to="/actualEvents">See all events</Link>
+          <Link to="/allEvents">See all events</Link>
         </li>
         <li>
-          <a href="#/delete">Delete event</a>
+          <Link to="/deleteEvent">Delete event</Link>
         </li>
       </ul>
     </div>

@@ -78,8 +78,8 @@ function CreateEventPage() {
     <div className="create-event-page">
       <Header />
       <form onSubmit={handleSubmit}>
-        {selectedImage && (
-          <div>
+        {selectedImage ? (
+          <div className="img-container">
             <img
               alt="Image not found"
               width={"250px"}
@@ -89,17 +89,18 @@ function CreateEventPage() {
               Remove image
             </button>
           </div>
+        ) : (
+          <label>
+            Cover image:
+            <input
+              type="file"
+              name="coverImageName"
+              onChange={(e) => setSelectedImage(e.target.files[0])}
+              className="add-img-btn"
+              required
+            />
+          </label>
         )}
-        <label>
-          Cover image:
-          <input
-            type="file"
-            name="coverImageName"
-            onChange={(e) => setSelectedImage(e.target.files[0])}
-            className="add-img-btn"
-            required
-          />
-        </label>
         <label>
           Name of the event:
           <input
