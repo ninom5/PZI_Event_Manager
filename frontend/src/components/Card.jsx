@@ -15,17 +15,18 @@ function Card(props, index) {
         </p>
         <br />
 
-        {/* <p>
+        <p>
           <b>Date of start: </b>
           {props.eventStart}
         </p>
         <p>
           <b>Date of end: </b>
           {props.eventEnd}
-        </p> */}
-        {/* <p>
+        </p>
+        <p>
           <b>Location: </b>
-        </p> */}
+          {props.eventLocation}
+        </p>
         <p>
           <b>Catgegory: </b>
           <br />

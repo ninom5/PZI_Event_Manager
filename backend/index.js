@@ -32,7 +32,7 @@ app.post("/events", (req, res) => {
       return res.json("Ending date cant be before starting date");
 
     if (trimmedDescription.length < 20)
-      return res.json("Description too short");
+      return res.status(400).json("Description too short");
 
     const newEvent = {
       id: events.length + 1,

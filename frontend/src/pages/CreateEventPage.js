@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -9,6 +9,7 @@ function CreateEventPage() {
   const [selectedImage, setSelectedImage] = useState("");
   const [startingDate, setStartingDate] = useState("");
   const [endingDate, setEndingDate] = useState("");
+  const [locationOptions, setLocationOptions] = useState([]);
 
   let categoryOptions = [
     "---------------------------",
@@ -18,6 +19,25 @@ function CreateEventPage() {
     "public exhibition",
     "humanitarian action",
   ];
+
+  useEffect(() => {
+    const fetchLocations = async () => {
+      try {
+        const response = await fetch(
+          "https://raw.githubusercontent.com/samayo/country-json/refs/heads/master/src/country-by-capital-city.json"
+        );
+
+        if (!response.ok) {
+          console.error("Error while fetching data");
+        }
+        const locationsData = await response.json();
+        setLocationOptions(locationsData);
+      } catch (error) {
+        alert("Error with fetching data: " + error.message);
+      }
+    };
+    fetchLocations();
+  }, []);
   // const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
@@ -44,7 +64,8 @@ function CreateEventPage() {
         eventDescription,
         startingDate: startingDate,
         endingDate: endingDate,
-        categories: document.querySelector("select[name='categories']").value,
+        location: document.querySelector("select[name='locations']").value,
+        category: document.querySelector("select[name='categories']").value,
       });
 
       const existingEvents = JSON.parse(localStorage.getItem("events")) || [];
@@ -55,7 +76,8 @@ function CreateEventPage() {
         eventDescription,
         startingDate,
         endingDate,
-        categories: document.querySelector("select[name='categories']").value,
+        location: document.querySelector("select[name='locations']").value,
+        category: document.querySelector("select[name='categories']").value,
       };
 
       existingEvents.push(newEvent);
@@ -68,7 +90,7 @@ function CreateEventPage() {
       setSelectedImage(null);
 
       document.querySelector("select[name='categories']").selectedIndex = 0;
-
+      document.querySelector("select[name='locations']").selectIndex = 0;
       alert(response.data);
     } catch (error) {
       console.error("Error creating event:", error);
@@ -145,6 +167,16 @@ function CreateEventPage() {
             onChange={(e) => setEndingDate(e.target.value)}
             required
           />
+        </label>
+        <label>
+          Location
+          <select name="locations">
+            {locationOptions.map((location, index) => (
+              <option key={index} value={location.city}>
+                {location.city}, {location.country}
+              </option>
+            ))}
+          </select>
         </label>
         <label>
           Category:

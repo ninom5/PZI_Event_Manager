@@ -23,9 +23,10 @@ function AllEvents() {
                   eventImg={event.coverImageName}
                   eventName={event.nameOfTheEvent}
                   eventDescription={event.eventDescription}
-                  // eventStart={event.startingbals}
-                  // eventEnd={event.endbla}
-                  eventCategory={event.categories}
+                  eventStart={event.startingDate}
+                  eventEnd={event.endingDate}
+                  eventLocation={event.location}
+                  eventCategory={event.category}
                   eventIndex={index}
                 />
               </div>
