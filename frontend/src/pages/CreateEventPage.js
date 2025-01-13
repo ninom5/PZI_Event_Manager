@@ -7,9 +7,11 @@ function CreateEventPage() {
   const [eventName, setEventName] = useState("");
   const [eventDescription, setEventDescription] = useState("");
   const [selectedImage, setSelectedImage] = useState("");
+  const [startingDate, setStartingDate] = useState("");
+  const [endingDate, setEndingDate] = useState("");
 
   let categoryOptions = [
-    "----------",
+    "---------------------------",
     "concert",
     "educational",
     "party",
@@ -20,11 +22,6 @@ function CreateEventPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!eventName || !eventDescription) {
-      alert("Please fill in all the required fields.");
-      return;
-    }
 
     const getBase64 = (file) =>
       new Promise((resolve, reject) => {
@@ -45,10 +42,10 @@ function CreateEventPage() {
         coverImageName: base64Image,
         nameOfTheEvent: eventName,
         eventDescription,
+        startingDate: startingDate,
+        endingDate: endingDate,
         categories: document.querySelector("select[name='categories']").value,
       });
-
-      alert(response.data);
 
       const existingEvents = JSON.parse(localStorage.getItem("events")) || [];
 
@@ -56,6 +53,8 @@ function CreateEventPage() {
         coverImageName: base64Image,
         nameOfTheEvent: eventName,
         eventDescription,
+        startingDate,
+        endingDate,
         categories: document.querySelector("select[name='categories']").value,
       };
 
@@ -64,13 +63,16 @@ function CreateEventPage() {
 
       setEventName("");
       setEventDescription("");
-
+      setStartingDate("");
+      setEndingDate("");
       setSelectedImage(null);
 
       document.querySelector("select[name='categories']").selectedIndex = 0;
+
+      alert(response.data);
     } catch (error) {
       console.error("Error creating event:", error);
-      alert("Failed to create event.");
+      alert("Failed to create event: " + error.response.data);
     }
   };
 
@@ -126,11 +128,23 @@ function CreateEventPage() {
         </label>
         <label>
           Starting date and time of the event:
-          <input type="datetime-local" required />
+          <input
+            type="datetime-local"
+            value={startingDate}
+            name="startingDate"
+            onChange={(e) => setStartingDate(e.target.value)}
+            required
+          />
         </label>
         <label>
           Ending date and time of the event:
-          <input type="datetime-local" required />
+          <input
+            type="datetime-local"
+            value={endingDate}
+            name="endingDate"
+            onChange={(e) => setEndingDate(e.target.value)}
+            required
+          />
         </label>
         <label>
           Category:

@@ -11,14 +11,36 @@ app.use(cors());
 
 app.post("/events", (req, res) => {
   try {
-    const { coverImageName, nameOfTheEvent, eventDescription, categories } =
-      req.body;
+    const {
+      coverImageName,
+      nameOfTheEvent,
+      eventDescription,
+      startingDate,
+      endingDate,
+      categories,
+    } = req.body;
+
+    const now = new Date();
+    const startEvent = new Date(startingDate);
+    const endEvent = new Date(endingDate);
+
+    const trimmedDescription = eventDescription.trim().split(" ").join("");
+
+    if (startEvent < now) return res.json("Starting date cant be in past");
+
+    if (startEvent > endEvent)
+      return res.json("Ending date cant be before starting date");
+
+    if (trimmedDescription.length < 20)
+      return res.json("Description too short");
 
     const newEvent = {
       id: events.length + 1,
       coverImageName,
       nameOfTheEvent,
       eventDescription,
+      startingDate,
+      endingDate,
       categories,
     };
 
