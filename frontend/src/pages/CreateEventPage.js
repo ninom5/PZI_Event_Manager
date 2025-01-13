@@ -172,7 +172,10 @@ function CreateEventPage() {
           Location
           <select name="locations">
             {locationOptions.map((location, index) => (
-              <option key={index} value={location.city}>
+              <option
+                key={index}
+                value={location.city + ", " + location.country}
+              >
                 {location.city}, {location.country}
               </option>
             ))}

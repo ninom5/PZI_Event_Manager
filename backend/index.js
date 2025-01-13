@@ -26,10 +26,11 @@ app.post("/events", (req, res) => {
 
     const trimmedDescription = eventDescription.trim().split(" ").join("");
 
-    if (startEvent < now) return res.json("Starting date cant be in past");
+    if (startEvent < now)
+      return res.status(400).json("Starting date cant be in past");
 
     if (startEvent > endEvent)
-      return res.json("Ending date cant be before starting date");
+      return res.status(400).json("Ending date cant be before starting date");
 
     if (trimmedDescription.length < 20)
       return res.status(400).json("Description too short");
@@ -48,7 +49,7 @@ app.post("/events", (req, res) => {
 
     return res.json("Successfully created new event");
   } catch (error) {
-    return res.json("error while creating new event");
+    return res.status(500).json("error while creating new event");
   }
 });
 
