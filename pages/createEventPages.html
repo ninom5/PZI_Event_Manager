@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/index.css" />
+    <title>Create event</title>
+  </head>
+  <body>
+    <nav class="header">
+      <ul class="header-list">
+        <li>
+          <a href="../index.html">Home</a>
+        </li>
+        <li>
+          <a href="">About</a>
+        </li>
+        <li>
+          <a href="">Create event</a>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <section class="create-event-section">
+        <form action="submit" class="create-event-section__form">
+          <div id="image-fields">
+            <label for="image-input" id="image-label">Event image</label>
+            <input type="file" name="image-input" required />
+          </div>
+          <input type="text" placeholder="Event name" required />
+          <input type="text" placeholder="Event description" required />
+          <input type="text" placeholder="Location" required />
+          <input type="date" />
+          <input type="date" />
+          <button type="submit" id="submit-button">Submit</button>
+        </form>
+      </section>
+    </main>
+    <script src="./scripts/script.js" type="module"></script>
+  </body>
+</html>

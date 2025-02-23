@@ -1,0 +1,61 @@
+.create-event-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 90vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-event-section__form {
+  display: flex;
+  flex-direction: column;
+  width: 27%;
+  height: auto;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--main-white-color);
+  border-radius: 8px;
+  padding: 50px 0;
+  color: var(--main-white-color);
+  margin-top: 100px;
+}
+
+#image-fields {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+#image-fields input {
+  width: 50%;
+}
+
+#image-label {
+  font-size: 1.25rem;
+}
+
+.create-event-section__form input[type="text"] {
+  width: 70%;
+  height: auto;
+  font-size: 1.25rem;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+}
+
+#submit-button {
+  width: 40%;
+  height: auto;
+  padding: 10px 4px;
+  font-size: 1.25rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: ease-in-out 0.7s;
+}
+#submit-button:hover {
+  background-color: lightskyblue;
+  color: white;
+}

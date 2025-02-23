@@ -1,0 +1,40 @@
+.header {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: auto;
+  padding: 30px;
+}
+
+.header-list {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-self: center;
+  align-items: center;
+  justify-content: space-around;
+  list-style: none;
+}
+
+.header-list li a {
+  position: relative;
+  font-size: 28px;
+  line-height: 30px;
+  letter-spacing: 0.5px;
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.header-list li a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background-color: var(--main-white-color);
+  transition: width 0.5s ease;
+}
+.header-list li a:hover::after {
+  width: 100%;
+}
