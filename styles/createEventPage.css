@@ -19,7 +19,8 @@
   border-radius: 8px;
   padding: 50px 0;
   color: var(--main-white-color);
-  margin-top: 100px;
+  margin-top: 150px;
+  margin-bottom: 100px; /*prominit*/
 }
 
 #image-fields {

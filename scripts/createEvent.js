@@ -31,7 +31,11 @@ function createEvent() {
     location
   );
 
-  localStorage.setItem("event", JSON.stringify(newEvent));
+  let allEvents = JSON.parse(localStorage.getItem("events")) || [];
+
+  allEvents.push(newEvent);
+
+  localStorage.setItem("events", JSON.stringify(allEvents));
 
   resetForm();
 }
