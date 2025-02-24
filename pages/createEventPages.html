@@ -28,9 +28,19 @@
             <label for="image-input" id="image-label">Event image</label>
             <input type="file" name="image-input" required />
           </div>
-          <input type="text" placeholder="Event name" required />
-          <input type="text" placeholder="Event description" required />
-          <input type="text" placeholder="Location" required />
+          <input
+            type="text"
+            placeholder="Event name"
+            id="event-name"
+            required
+          />
+          <input
+            type="text"
+            placeholder="Event description"
+            id="event-description"
+            required
+          />
+          <select placeholder="Location" id="city-select" required></select>
 
           <div class="calendar">
             <div class="calendar-header">
@@ -83,6 +93,7 @@
         </form>
       </section>
     </main>
+    <script src="../scripts/createCalendar.js" type="module"></script>
     <script src="../scripts/createEvent.js" type="module"></script>
   </body>
 </html>

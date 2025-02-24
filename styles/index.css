@@ -1,6 +1,7 @@
 @import "./header.css";
 @import "./createEventPage.css";
 @import "./variables.css";
+@import "./calendar.css";
 
 * {
   margin: 0;
