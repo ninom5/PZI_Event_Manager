@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   for (let i = currentYear; i < currentYear + 100; i++) {
     let yearOption = document.createElement("option");
     yearOption.textContent = i;
+    yearOption.setAttribute("value", i);
     yearSelect.appendChild(yearOption);
   }
 
@@ -25,13 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
     const lastDayOfMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-    console.log(firstDayOfMonth + " " + lastDayOfMonth);
-    console.log(currentMonth);
-
     let daysRow = document.createElement("div");
     daysRow.classList.add("calendar-body__days-row");
 
-    for (let i = 0; i < firstDayOfMonth; i++) {
+    for (let i = 0; i < firstDayOfMonth - 1; i++) {
       let emptyDay = document.createElement("div");
       emptyDay.classList.add("day");
       daysRow.appendChild(emptyDay);
@@ -64,11 +62,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (daysRow.children.length > 0) {
       calendarBody.appendChild(daysRow);
     }
+
+    for (let i = daysRow.children.length; i < 7; i++) {
+      let emptyDay = document.createElement("div");
+      emptyDay.classList.add("day");
+      daysRow.appendChild(emptyDay);
+    }
   }
 
   function updateCalendar() {
     currentYear = parseInt(yearSelect.value);
-    currentMonth = parseInt(monthSelect.value) - 1;
+    currentMonth = parseInt(monthSelect.value);
     generateCalendar(currentMonth, currentYear);
   }
 
@@ -80,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     yearSelect.value = currentYear;
-    monthSelect.value = currentMonth + 1;
+    monthSelect.value = currentMonth;
 
     generateCalendar(currentMonth, currentYear);
   });
@@ -93,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     yearSelect.value = currentYear;
-    monthSelect.value = currentMonth + 1;
+    monthSelect.value = currentMonth;
 
     generateCalendar(currentMonth, currentYear);
   });
