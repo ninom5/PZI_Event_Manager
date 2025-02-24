@@ -31,12 +31,58 @@
           <input type="text" placeholder="Event name" required />
           <input type="text" placeholder="Event description" required />
           <input type="text" placeholder="Location" required />
-          <input type="date" />
-          <input type="date" />
+
+          <div class="calendar">
+            <div class="calendar-header">
+              <div class="calendar-header__dates">
+                <button type="button" class="previous-month-button">
+                  &lt;
+                </button>
+                <span class="year-months">
+                  <span class="pick-year">
+                    <select class="pick-year__select">
+                      <option value="" disabled>Pick Year</option>
+                    </select>
+                  </span>
+
+                  <span class="pick-month">
+                    <select class="pick-month__select">
+                      <option value="" disabled>Pick</option>
+                      <option value="0">January</option>
+                      <option value="1">February</option>
+                      <option value="2">March</option>
+                      <option value="3">April</option>
+                      <option value="4">May</option>
+                      <option value="5">June</option>
+                      <option value="6">July</option>
+                      <option value="7">August</option>
+                      <option value="8">September</option>
+                      <option value="9">October</option>
+                      <option value="10">November</option>
+                      <option value="11" selected>December</option>
+                    </select>
+                  </span>
+                </span>
+                <button type="button" class="next-month-button">&gt;</button>
+              </div>
+
+              <div class="calendar-header__days-row">
+                <div class="day">M</div>
+                <div class="day">T</div>
+                <div class="day">W</div>
+                <div class="day">T</div>
+                <div class="day">F</div>
+                <div class="day">S</div>
+                <div class="day">S</div>
+              </div>
+            </div>
+            <div class="calendar-body"></div>
+          </div>
+
           <button type="submit" id="submit-button">Submit</button>
         </form>
       </section>
     </main>
-    <script src="./scripts/script.js" type="module"></script>
+    <script src="../scripts/createEvent.js" type="module"></script>
   </body>
 </html>
