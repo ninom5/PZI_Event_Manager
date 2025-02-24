@@ -71,12 +71,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateCalendar() {
+    prevMonthButton.disabled = false;
+    nextMonthButton.disabled = false;
+
     currentYear = parseInt(yearSelect.value);
     currentMonth = parseInt(monthSelect.value);
     generateCalendar(currentMonth, currentYear);
   }
 
   prevMonthButton.addEventListener("click", () => {
+    nextMonthButton.disabled = false;
+
+    if (currentYear === 2025 && currentMonth === 0) {
+      prevMonthButton.disabled = true;
+      return;
+    }
     currentMonth--;
     if (currentMonth < 0) {
       currentMonth = 11;
@@ -90,6 +99,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   nextMonthButton.addEventListener("click", () => {
+    prevMonthButton.disabled = false;
+
+    if (currentYear === 2124 && currentMonth === 11) {
+      nextMonthButton.disabled = true;
+      return;
+    }
+
     currentMonth++;
     if (currentMonth > 11) {
       currentMonth = 0;
