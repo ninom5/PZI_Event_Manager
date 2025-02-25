@@ -86,3 +86,14 @@
   background-color: #ccc;
   border-radius: 50%;
 }
+
+.selected-date {
+  background-color: #ccc !important;
+  color: black !important;
+  border-radius: 50%;
+}
+
+.todays-date {
+  background-color: blue !important;
+  border-radius: 50%;
+}

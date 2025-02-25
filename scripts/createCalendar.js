@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const calendarBody = document.createElement("div");
   calendarBody.classList.add("calendar-body");
+
   const calendar = document.querySelector(".calendar");
   calendar.appendChild(calendarBody);
 
@@ -9,9 +10,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const yearSelect = document.querySelector(".pick-year__select");
   const monthSelect = document.querySelector(".pick-month__select");
 
-  let currentDate = new Date();
+  const currentDate = new Date();
   let currentYear = currentDate.getFullYear();
   let currentMonth = currentDate.getMonth();
+
+  const formattedCurrentDate = currentDate.toISOString().split("T")[0];
 
   for (let i = currentYear; i < currentYear + 100; i++) {
     let yearOption = document.createElement("option");
@@ -49,11 +52,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
       dayDiv.classList.add("day");
 
+      const formattedDate = `${currentYear}-${String(currentMonth + 1).padStart(
+        2,
+        "0"
+      )}-${String(day).padStart(2, "0")}`;
+
       button.textContent = day;
       button.setAttribute(
         "data-date",
         `${currentYear}-${currentMonth + 1}-${day}`
       );
+
+      if (formattedDate === formattedCurrentDate)
+        button.classList.add("todays-date");
+
+      button.addEventListener("click", (e) => {
+        const selectedDate = e.target.getAttribute("data-date");
+        console.log(selectedDate);
+        document
+          .querySelectorAll(".day button")
+          .forEach((btn) => btn.classList.remove("selected-date"));
+
+        e.target.classList.add("selected-date");
+      });
 
       dayDiv.appendChild(button);
       daysRow.appendChild(dayDiv);

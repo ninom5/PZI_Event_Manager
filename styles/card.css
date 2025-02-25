@@ -36,7 +36,7 @@
 }
 
 .no-events-heading {
-  color: lightgoldenrodyellow;
+  color: var(--light-gold);
   text-align: center;
   font-size: 30px;
   margin-top: 100px;
