@@ -12,32 +12,52 @@ createEventForm.addEventListener("submit", (e) => {
 });
 
 function createEvent() {
-  const imageOfTheEvent = document.getElementById("image-input").value;
+  const imageOfTheEvent = document.getElementById("image-input");
   const nameOfTheEvent = document.getElementById("event-name").value;
   const eventDescription = document.getElementById("event-description").value;
   const location = document.getElementById("city-select").value;
 
-  validateEventData(
-    imageOfTheEvent,
-    nameOfTheEvent,
-    eventDescription,
-    location
-  );
+  if (
+    !validateEventData(
+      imageOfTheEvent,
+      nameOfTheEvent,
+      eventDescription,
+      location
+    )
+  )
+    return;
 
-  const newEvent = new Event(
-    imageOfTheEvent,
-    nameOfTheEvent?.trim(),
-    eventDescription?.trim(),
-    location
-  );
+  const imageFile = imageOfTheEvent.files[0];
+  if (!imageFile) {
+    alert("Upload image");
+    return;
+  }
 
-  let allEvents = JSON.parse(localStorage.getItem("events")) || [];
+  try {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const base64Image = e.target.result;
 
-  allEvents.push(newEvent);
+      const newEvent = new Event(
+        base64Image,
+        nameOfTheEvent?.trim(),
+        eventDescription?.trim(),
+        location
+      );
 
-  localStorage.setItem("events", JSON.stringify(allEvents));
+      let allEvents = JSON.parse(localStorage.getItem("events")) || [];
+      allEvents.push(newEvent);
 
-  resetForm();
+      localStorage.setItem("events", JSON.stringify(allEvents));
+      resetForm();
+    };
+    reader.readAsDataURL(imageFile);
+  } catch (error) {
+    alert("Error creating event");
+    console.log("Error creating event: ", error);
+
+    return;
+  }
 }
 
 const validateEventData = (

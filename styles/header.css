@@ -21,7 +21,7 @@
   font-size: 28px;
   line-height: 30px;
   letter-spacing: 0.5px;
-  color: whitesmoke;
+  color: var(--main-white-color);
   text-decoration: none;
 }
 

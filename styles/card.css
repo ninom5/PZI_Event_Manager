@@ -1,0 +1,44 @@
+.card {
+  position: relative;
+  width: 25%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  font-size: 24px;
+  letter-spacing: 0.5px;
+  border: 1px solid white;
+  border-radius: 8px;
+  background-color: lightgray;
+  padding: 30px;
+  margin-bottom: 70px;
+}
+
+.delete-card-btn {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#event-card-image {
+  width: 90%;
+  height: auto;
+  border-radius: 8px;
+  align-self: center;
+}
+
+#card-h2-span {
+  font-weight: 400;
+}
+
+.no-events-heading {
+  color: lightgoldenrodyellow;
+  text-align: center;
+  font-size: 30px;
+  margin-top: 100px;
+  padding-bottom: 100px;
+}
