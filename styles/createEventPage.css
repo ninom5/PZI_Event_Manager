@@ -61,3 +61,20 @@ select {
   background-color: lightskyblue;
   color: white;
 }
+
+.date-picker-container {
+  display: flex;
+  position: relative;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}
+
+.date-picker-container button {
+  position: absolute;
+  top: 12px;
+  right: 90px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}

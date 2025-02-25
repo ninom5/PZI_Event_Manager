@@ -13,7 +13,7 @@
           <a href="../index.html">Home</a>
         </li>
         <li>
-          <a href="">About</a>
+          <a href="../index.html#all-events-section">All events</a>
         </li>
         <li>
           <a href="">Create event</a>
@@ -41,6 +41,16 @@
             required
           />
           <select placeholder="Location" id="city-select" required></select>
+
+          <div class="date-picker-container">
+            <input
+              type="text"
+              class="date-input"
+              readonly
+              placeholder="Start-End date"
+            />
+            <button type="button" id="clear-dates">Clear dates</button>
+          </div>
 
           <div class="calendar">
             <div class="calendar-header">

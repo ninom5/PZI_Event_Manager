@@ -2,6 +2,28 @@ import { addCities } from "./addCities.js";
 import { Event } from "../models/EventEntity.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  const dateInput = document.querySelector(".date-input");
+  const calendar = document.querySelector(".calendar");
+
+  const clearDatesBtn = document.getElementById("clear-dates");
+  clearDatesBtn.addEventListener("click", () => {
+    document
+      .querySelectorAll(".day button")
+      .forEach((btn) => btn.classList.remove("selected-date"));
+
+    dateInput.value = "";
+  });
+
+  dateInput.addEventListener("click", () => {
+    calendar.classList.toggle("show");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!calendar.contains(e.target) && e.target !== dateInput) {
+      calendar.classList.remove("show");
+    }
+  });
+
   addCities();
 });
 
@@ -16,16 +38,39 @@ function createEvent() {
   const nameOfTheEvent = document.getElementById("event-name").value;
   const eventDescription = document.getElementById("event-description").value;
   const location = document.getElementById("city-select").value;
+  const dateStartEnd = document.querySelector(".date-input").value;
 
   if (
     !validateEventData(
       imageOfTheEvent,
       nameOfTheEvent,
       eventDescription,
-      location
+      location,
+      dateStartEnd
     )
   )
     return;
+
+  const clearedDate = dateStartEnd
+    .replace("Start: ", "")
+    .replace("End: ", "")
+    .trim();
+
+  const dates = clearedDate.split(" - ");
+
+  const startDate = dates[0].trim();
+  const endDate = dates[1].trim();
+  const currentDate = new Date();
+
+  if (
+    new Date(startDate) < currentDate ||
+    new Date(startDate) > new Date(endDate)
+  ) {
+    alert(
+      "dates can't be in past and ending date can't be before starting one"
+    );
+    return;
+  }
 
   const imageFile = imageOfTheEvent.files[0];
   if (!imageFile) {
@@ -42,7 +87,9 @@ function createEvent() {
         base64Image,
         nameOfTheEvent?.trim(),
         eventDescription?.trim(),
-        location
+        location,
+        startDate,
+        endDate
       );
 
       let allEvents = JSON.parse(localStorage.getItem("events")) || [];
@@ -50,6 +97,8 @@ function createEvent() {
 
       localStorage.setItem("events", JSON.stringify(allEvents));
       resetForm();
+
+      alert("Successfully added new event");
     };
     reader.readAsDataURL(imageFile);
   } catch (error) {
@@ -64,7 +113,8 @@ const validateEventData = (
   imageOfTheEvent,
   nameOfTheEvent,
   eventDescription,
-  location
+  location,
+  dateStartEnd
 ) => {
   if (
     imageOfTheEvent === null ||
@@ -74,6 +124,11 @@ const validateEventData = (
   ) {
     alert("Fill in all the fields");
     return false;
+  }
+
+  if (!dateStartEnd.includes("Start:") || !dateStartEnd.includes("End:")) {
+    alert("Pick valid dates");
+    return;
   }
 
   if (nameOfTheEvent?.trim() === "" || eventDescription?.trim() === "") {

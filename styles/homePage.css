@@ -71,3 +71,10 @@
   padding: 50px;
   border-radius: 60px;
 }
+
+.show-all-events {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 200px;
+}

@@ -8,6 +8,7 @@
   align-items: center;
   padding: 20px;
   box-sizing: border-box;
+  display: none;
 }
 
 .calendar-header__dates {
@@ -96,4 +97,8 @@
 .todays-date {
   background-color: blue !important;
   border-radius: 50%;
+}
+
+.show {
+  display: block;
 }

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const eventsContainer = document.querySelector(".showAllEvents");
+  const eventsContainer = document.querySelector(".show-all-events");
 
   let allEvents = JSON.parse(localStorage.getItem("events")) || [];
 
@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const eventImg = document.createElement("img");
     eventImg.setAttribute("src", event.image);
     eventImg.setAttribute("alt", "Event image");
+    eventImg.classList.add("event-card-image");
 
     const eventName = document.createElement("h3");
     eventName.innerHTML = `Event name: <span>${event.name}</span>`;
@@ -28,11 +29,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const eventLocation = document.createElement("h3");
     eventLocation.innerHTML = `Event location: <span>${event.location}</span>`;
 
-    // const startDate = document.createElement("h3");
-    // startDate.innerHTML = `Start of the event: <span>${event.eventStart}</span>`;
+    const startDate = document.createElement("h3");
+    startDate.innerHTML = `Start of the event: <span>${event.startDate}</span>`;
 
-    // const endDate = document.createElement("h3");
-    // endDate.innerHTML = `End of the event: <span>${event.endDate}</span>`;
+    const endDate = document.createElement("h3");
+    endDate.innerHTML = `End of the event: <span>${event.endDate}</span>`;
 
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("delete-card-btn");
@@ -53,8 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
     card.appendChild(eventName);
     card.appendChild(eventDescription);
     card.appendChild(eventLocation);
-    // card.appendChild(startDate);
-    // card.appendChild(endDate);
+    card.appendChild(startDate);
+    card.appendChild(endDate);
     card.appendChild(deleteButton);
 
     eventsContainer.appendChild(card);

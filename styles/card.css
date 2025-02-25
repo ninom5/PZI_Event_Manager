@@ -1,6 +1,6 @@
 .card {
   position: relative;
-  width: 25%;
+  width: 22%;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -24,10 +24,11 @@
   cursor: pointer;
 }
 
-#event-card-image {
+.event-card-image {
   width: 90%;
   height: auto;
-  border-radius: 8px;
+  object-fit: cover;
+  border-radius: 5px;
   align-self: center;
 }
 

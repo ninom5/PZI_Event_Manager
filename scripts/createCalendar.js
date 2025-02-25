@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const calendar = document.querySelector(".calendar");
   calendar.appendChild(calendarBody);
 
+  const dateInput = document.querySelector(".date-input");
+
   const prevMonthButton = document.querySelector(".previous-month-button");
   const nextMonthButton = document.querySelector(".next-month-button");
   const yearSelect = document.querySelector(".pick-year__select");
@@ -13,6 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const currentDate = new Date();
   let currentYear = currentDate.getFullYear();
   let currentMonth = currentDate.getMonth();
+
+  let startDate = null;
+  let endDate = null;
 
   const formattedCurrentDate = currentDate.toISOString().split("T")[0];
 
@@ -68,12 +73,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
       button.addEventListener("click", (e) => {
         const selectedDate = e.target.getAttribute("data-date");
-        console.log(selectedDate);
+
+        if (!startDate) {
+          startDate = selectedDate;
+          dateInput.value = `Starting: ${startDate}`;
+        } else {
+          if (new Date(selectedDate) < new Date(startDate)) {
+            startDate = selectedDate;
+            dateInput.value = `Starting: ${startDate}`;
+            endDate = null;
+          } else {
+            endDate = selectedDate;
+            dateInput.value = `Start: ${startDate} - End: ${endDate}`;
+          }
+        }
+
         document
           .querySelectorAll(".day button")
           .forEach((btn) => btn.classList.remove("selected-date"));
 
-        e.target.classList.add("selected-date");
+        const startButton = document.querySelector(
+          `button[data-date='${startDate}']`
+        );
+        if (startButton) startButton.classList.add("selected-date");
+
+        if (endDate) {
+          const endButton = document.querySelector(
+            `button[data-date='${endDate}']`
+          );
+          if (endButton) endButton.classList.add("selected-date");
+        }
+
+        if (startDate && endDate) calendar.classList.remove("show");
       });
 
       dayDiv.appendChild(button);
@@ -140,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   yearSelect.value = currentYear;
-  monthSelect.value = currentMonth + 1;
+  monthSelect.value = currentMonth;
 
   yearSelect.addEventListener("change", updateCalendar);
   monthSelect.addEventListener("change", updateCalendar);
