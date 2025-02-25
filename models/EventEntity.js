@@ -1,8 +1,8 @@
-let EventId = 0;
-
 class Event {
   constructor(image, name, description, location, startDate, endDate) {
-    this.id = EventId++;
+    let allEvents = JSON.parse(localStorage.getItem("events")) || [];
+    this.id = allEvents.length;
+
     this.image = image;
     this.name = name;
     this.description = description;
