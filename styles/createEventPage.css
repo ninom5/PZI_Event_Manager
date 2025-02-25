@@ -70,10 +70,11 @@ select {
   justify-content: center;
 }
 
-.date-picker-container button {
+#clear-dates {
   position: absolute;
-  top: 12px;
-  right: 90px;
+  top: 7px;
+  right: 85px;
+  width: 30px;
   border: none;
   background-color: transparent;
   cursor: pointer;

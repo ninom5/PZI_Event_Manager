@@ -5,15 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const dateInput = document.querySelector(".date-input");
   const calendar = document.querySelector(".calendar");
 
-  const clearDatesBtn = document.getElementById("clear-dates");
-  clearDatesBtn.addEventListener("click", () => {
-    document
-      .querySelectorAll(".day button")
-      .forEach((btn) => btn.classList.remove("selected-date"));
-
-    dateInput.value = "";
-  });
-
   dateInput.addEventListener("click", () => {
     calendar.classList.toggle("show");
   });

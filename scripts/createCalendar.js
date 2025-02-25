@@ -122,6 +122,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  const clearDatesBtn = document.getElementById("clear-dates");
+  clearDatesBtn.addEventListener("click", () => {
+    document
+      .querySelectorAll(".day button")
+      .forEach((btn) => btn.classList.remove("selected-date"));
+
+    startDate = null;
+    endDate = null;
+
+    dateInput.value = "";
+  });
+
   function updateCalendar() {
     prevMonthButton.disabled = false;
     nextMonthButton.disabled = false;
