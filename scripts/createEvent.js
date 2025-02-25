@@ -31,6 +31,12 @@ function createEvent() {
   const location = document.getElementById("city-select").value;
   const dateStartEnd = document.querySelector(".date-input").value;
 
+  //za preventat overflow, na 12 eventova bude otprilike 2.3mb/5mb zauzeto localStoragea
+  if (localStorage.length >= 25) {
+    alert("Maximum events limit reached");
+    return;
+  }
+
   if (
     !validateEventData(
       imageOfTheEvent,
