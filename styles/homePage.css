@@ -104,6 +104,8 @@
   font-family: "Courier New", Courier, monospace;
   color: var(--main-white-color);
   text-align: center;
+  padding-top: 100px;
+  padding-bottom: 20px;
 }
 
 .footer a {
