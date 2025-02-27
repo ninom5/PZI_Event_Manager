@@ -1,7 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const eventsContainer = document.querySelector(".show-all-events");
-
   let allEvents = JSON.parse(localStorage.getItem("events")) || [];
+  const filterInput = document.getElementById("filter-input");
+
+  filterInput.addEventListener("input", () => {
+    const filterValue = filterInput.value;
+    const filteredEvents = allEvents.filter((event) =>
+      event.location.toLowerCase().includes(filterValue)
+    );
+    showEventCards(filteredEvents);
+  });
 
   if (!allEvents || allEvents.length === 0) {
     const noEventsHeading = document.createElement("h2");
@@ -11,6 +18,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     return;
   }
+
+  showEventCards(allEvents);
+});
+
+const showEventCards = (allEvents) => {
+  const eventsContainer = document.querySelector(".show-all-events");
+
+  eventsContainer.innerHTML = "";
+
+  if (allEvents.length === 0) {
+    const heading = document.createElement("h1");
+    heading.style.fontSize = "30px";
+    heading.style.color = "white";
+    heading.textContent = "No events available";
+    eventsContainer.appendChild(heading);
+    return;
+  }
+
   allEvents.forEach((event) => {
     const card = document.createElement("div");
     card.classList.add("card");
@@ -60,4 +85,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     eventsContainer.appendChild(card);
   });
-});
+};
