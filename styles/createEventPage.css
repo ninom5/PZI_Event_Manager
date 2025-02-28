@@ -6,7 +6,6 @@
   align-items: center;
   justify-content: center;
 }
-
 .create-event-section__form {
   display: flex;
   flex-direction: column;

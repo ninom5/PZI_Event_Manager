@@ -16,7 +16,6 @@
   justify-content: space-around;
   list-style: none;
 }
-
 .header-list li a {
   position: relative;
   font-size: 28px;
@@ -25,7 +24,6 @@
   color: var(--main-white-color);
   text-decoration: none;
 }
-
 .header-list li a::after {
   content: "";
   position: absolute;
@@ -39,7 +37,6 @@
 .header-list li a:hover::after {
   width: 100%;
 }
-
 .header-list li a:hover {
   color: var(--light-gold);
 }
