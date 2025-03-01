@@ -55,6 +55,10 @@
 
 .card h3 span {
   color: var(--main-white-color);
+  width: 90%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 @keyframes fadeIn {

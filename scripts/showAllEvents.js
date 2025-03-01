@@ -11,15 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
     showEventCards(filteredEvents);
   });
 
-  // if (!allEvents || allEvents.length === 0) {
-  //   const noEventsHeading = document.createElement("h2");
-  //   noEventsHeading.textContent = "No created events right now";
-  //   noEventsHeading.classList.add("no-events-heading");
-  //   eventsContainer.appendChild(noEventsHeading);
-
-  //   return;
-  // }
-
   showEventCards(allEvents);
 });
 
