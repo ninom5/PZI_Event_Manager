@@ -9,7 +9,7 @@ async function addCities() {
   cities.forEach((city) => {
     const citySelectOption = document.createElement("option");
 
-    citySelectOption.setAttribute("value", city.city + ", " + city.country);
+    citySelectOption.setAttribute("value", city?.city + ", " + city.country);
     citySelectOption.textContent = city.city + ", " + city.country;
 
     citySelect.appendChild(citySelectOption);
