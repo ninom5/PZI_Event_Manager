@@ -128,8 +128,7 @@
   font-family: "Courier New", Courier, monospace;
   color: var(--main-white-color);
   text-align: center;
-  padding-top: 100px;
-  padding-bottom: 20px;
+  padding: 100px 0 20px;
 }
 .footer a {
   text-decoration: none;
@@ -224,5 +223,10 @@
 
   .filter-events {
     padding: 20px 0;
+  }
+
+  .footer {
+    font-size: 17px;
+    padding: 100px 10px 20px;
   }
 }

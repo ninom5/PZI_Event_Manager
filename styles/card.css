@@ -97,10 +97,6 @@
     width: 60%;
   }
 
-  .footer {
-    font-size: 17px;
-  }
-
   @media (max-width: 470px) {
     .card {
       font-size: 20px;
