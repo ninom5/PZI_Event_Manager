@@ -7,17 +7,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const filteredEvents = allEvents.filter((event) =>
       event.location.toLowerCase().includes(filterValue)
     );
+
     showEventCards(filteredEvents);
   });
 
-  if (!allEvents || allEvents.length === 0) {
-    const noEventsHeading = document.createElement("h2");
-    noEventsHeading.textContent = "No created events right now";
-    noEventsHeading.classList.add("no-events-heading");
-    eventsContainer.appendChild(noEventsHeading);
+  // if (!allEvents || allEvents.length === 0) {
+  //   const noEventsHeading = document.createElement("h2");
+  //   noEventsHeading.textContent = "No created events right now";
+  //   noEventsHeading.classList.add("no-events-heading");
+  //   eventsContainer.appendChild(noEventsHeading);
 
-    return;
-  }
+  //   return;
+  // }
 
   showEventCards(allEvents);
 });
@@ -27,12 +28,12 @@ const showEventCards = (allEvents) => {
 
   eventsContainer.innerHTML = "";
 
-  if (allEvents.length === 0) {
-    const heading = document.createElement("h1");
-    heading.style.fontSize = "30px";
-    heading.style.color = "white";
-    heading.textContent = "No events available";
-    eventsContainer.appendChild(heading);
+  if (!allEvents || allEvents.length === 0) {
+    const noEventsHeading = document.createElement("h2");
+    noEventsHeading.textContent = "No created events right now";
+    noEventsHeading.classList.add("no-events-heading");
+    eventsContainer.appendChild(noEventsHeading);
+
     return;
   }
 

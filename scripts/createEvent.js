@@ -90,7 +90,6 @@ function createEvent() {
         endDate
       );
 
-      let allEvents = JSON.parse(localStorage.getItem("events")) || [];
       allEvents.push(newEvent);
 
       localStorage.setItem("events", JSON.stringify(allEvents));
